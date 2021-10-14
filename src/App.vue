@@ -1,28 +1,47 @@
 <template>
-  <div style="display:flex">
-    <Sheet bg-color="#3498db" color="white" width="250" height="300">
-      <h3>Memo to myself</h3>
-      <p>Always prepare for PLFs in time!</p>
-      <img src="info.svg" width="80px" />
-    </Sheet>
-    <Sheet bg-color="#8e44ad" color="yellow" width="400" height="300">
-      <p>INSY, SEW and Webtechnologies are our favorite subjects!</p>
-      <span style="font-style: italic">Starkschwitz Fiedler, Jan Schreck</span>
-      <p>Wish is was there!</p>
-      <span style="font-style: italic">E. Wahn</span>
-    </Sheet>
+<!-- Aufgabe 2 --Anordnung spielt keine rolle -->
+  <div id="app">
+    <v-data-table
+      :headers="headers"
+      :items="desserts"
+      item-key="name"
+      class="elevation-1"
+      :search="search"
+      :custom-filter="filterOnlyCapsText"
+    >
+      
+      <template v-slot:body.append>
+        <tr>
+          <td></td>
+          <td>
+            <v-text-field v-model="calories" type="number" label="Less">
+            </v-text-field>
+          </td>
+          <td colspan="4"></td>
+        </tr>
+      </template>
+      <template v-slot:top>
+        <v-text-field
+          v-model="search"
+          label="Search"
+          class="mx-4"
+        ></v-text-field>
+      </template>
+    </v-data-table>
   </div>
 </template>
 
 <script>
-// import AppButton from "@/components/AppButton.vue";
-import Sheet from "@/components/Sheet.vue";
+// import AppButton from '@/components/AppButton.vue';
+// // import Sheet from '@/components/Sheet.vue';
+// import AppLayout from '@/components/AppLayout.vue';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     // AppButton,
-    Sheet,
+    // // Sheet,
+    // AppLayout,
   },
   data: () => ({
     //
